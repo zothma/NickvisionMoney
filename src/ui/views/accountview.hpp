@@ -43,6 +43,8 @@ namespace NickvisionMoney::UI::Views
 		GSimpleActionGroup* m_actionMap{ nullptr };
 		GSimpleAction* m_actExportAsCSV{ nullptr };
 		GSimpleAction* m_actImportFromCSV{ nullptr };
+		GSimpleAction* m_actExportAsQIF{ nullptr };
+		GSimpleAction* m_actImportFromQIF{ nullptr };
 		GSimpleAction* m_actNewGroup{ nullptr };
 		GSimpleAction* m_actNewTransaction{ nullptr };
 		GtkEventController* m_shortcutController{ nullptr };
@@ -60,6 +62,14 @@ namespace NickvisionMoney::UI::Views
 		 * Occurs when the import from csv menu item is clicked
 		 */
 		void onImportFromCSV();
+		/**
+		 * Occurs when the export as qif menu item is clicked
+		 */
+		void onExportAsQIF();
+		/**
+		 * Occurs when the import from qif menu item is clicked
+		 */
+		void onImportFromQIF();
 		/**
 		 * Occurs when the new group button is clicked
 		 */

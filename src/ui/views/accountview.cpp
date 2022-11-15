@@ -44,6 +44,8 @@ AccountView::AccountView(GtkWindow* parentWindow, AdwTabView* parentTabView, con
     GMenu* menuActions{ g_menu_new() };
     g_menu_append(menuActions, _("Export as CSV"), "account.exportAsCSV");
     g_menu_append(menuActions, _("Import from CSV"), "account.importFromCSV");
+    g_menu_append(menuActions, _("Export as QIF"), "account.exportAsQIF");
+    g_menu_append(menuActions, _("Import from QIF"), "account.importFromQIF");
     gtk_menu_button_set_menu_model(GTK_MENU_BUTTON(m_btnMenuAccountActions), G_MENU_MODEL(menuActions));
     g_object_unref(menuActions);
     //Overview Group
@@ -111,6 +113,14 @@ AccountView::AccountView(GtkWindow* parentWindow, AdwTabView* parentTabView, con
     m_actImportFromCSV = g_simple_action_new("importFromCSV", nullptr);
     g_signal_connect(m_actImportFromCSV, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer))[](GSimpleAction*, GVariant*, gpointer data) { reinterpret_cast<AccountView*>(data)->onImportFromCSV(); }), this);
     g_action_map_add_action(G_ACTION_MAP(m_actionMap), G_ACTION(m_actImportFromCSV));
+    //Export as QIF Action
+    m_actExportAsQIF = g_simple_action_new("exportAsQIF", nullptr);
+    g_signal_connect(m_actExportAsQIF, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer))[](GSimpleAction*, GVariant*, gpointer data) { reinterpret_cast<AccountView*>(data)->onExportAsQIF(); }), this);
+    g_action_map_add_action(G_ACTION_MAP(m_actionMap), G_ACTION(m_actExportAsQIF));
+    //Import from QIF Action
+    m_actImportFromQIF = g_simple_action_new("importFromQIF", nullptr);
+    g_signal_connect(m_actImportFromQIF, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer))[](GSimpleAction*, GVariant*, gpointer data) { reinterpret_cast<AccountView*>(data)->onImportFromQIF(); }), this);
+    g_action_map_add_action(G_ACTION_MAP(m_actionMap), G_ACTION(m_actImportFromQIF));
     //New Transaction Action
     m_actNewGroup = g_simple_action_new("newGroup", nullptr);
     g_signal_connect(m_actNewGroup, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer))[](GSimpleAction*, GVariant*, gpointer data) { reinterpret_cast<AccountView*>(data)->onNewGroup(); }), this);
@@ -224,6 +234,14 @@ void AccountView::onImportFromCSV()
         g_object_unref(dialog);
     })), this);
     gtk_native_dialog_show(GTK_NATIVE_DIALOG(openFileDialog));
+}
+
+void AccountView::onExportAsQIF() {
+    // TODO: Implement file dialog opening
+}
+
+void AccountView::onImportFromQIF() {
+    // TODO: Implement file dialog opening
 }
 
 void AccountView::onNewGroup()

@@ -53,11 +53,17 @@ namespace NickvisionMoney::Controllers
 		 */
 		void startup();
 		/**
+		 * Gets the welcome message for the start screen
+		 *
+		 * @returns The welcomemessage
+		 */
+		std::string getWelcomeMessage() const;
+		/**
 		 * Gets a list of the recent accounts
 		 *
 		 * @returns The list of recent accounts
 		 */
-		std::vector<std::string> getRecentAccounts();
+		std::vector<std::string> getRecentAccounts() const;
 		/**
 		 * Registers a callback for adding an account to the UI
 		 *
@@ -76,6 +82,13 @@ namespace NickvisionMoney::Controllers
 		 * @returns The path of the first opened account
 		 */
 		std::string getFirstOpenAccountPath() const;
+		/**
+		 * Gets whether or not an account is opened
+		 *
+		 * @param path The path to the account
+		 * @returns True for opened, else false
+		 */
+		bool isAccountOpened(const std::string& path) const;
 		/**
 		 * Creates an AccountViewController for the latest account
 		 *

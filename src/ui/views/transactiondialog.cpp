@@ -32,7 +32,7 @@ TransactionDialog::TransactionDialog(GtkWindow* parent, NickvisionMoney::Control
     gtk_widget_add_css_class(m_btnDate, "flat");
     gtk_widget_set_valign(m_btnDate, GTK_ALIGN_CENTER);
     gtk_menu_button_set_popover(GTK_MENU_BUTTON(m_btnDate), m_popoverDate);
-    gtk_menu_button_set_label(GTK_MENU_BUTTON(m_btnDate), g_date_time_format(gtk_calendar_get_date(GTK_CALENDAR(m_calendarDate)), "%Y-%m-%d"));
+    gtk_menu_button_set_label(GTK_MENU_BUTTON(m_btnDate), g_date_time_format(gtk_calendar_get_date(GTK_CALENDAR(m_calendarDate)), "%x"));
     m_rowDate = adw_action_row_new();
     gtk_widget_set_size_request(m_rowDate, 420, -1);
     adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowDate), _("Date"));
@@ -92,6 +92,7 @@ GtkWidget* TransactionDialog::gobj()
 bool TransactionDialog::run()
 {
     gtk_widget_show(m_gobj);
+    gtk_window_set_modal(GTK_WINDOW(m_gobj), true);
     gtk_widget_grab_focus(m_rowDescription);
     while(gtk_widget_is_visible(m_gobj))
     {
@@ -100,6 +101,7 @@ bool TransactionDialog::run()
     if(m_controller.getResponse() == "ok")
     {
         gtk_widget_hide(m_gobj);
+        gtk_window_set_modal(GTK_WINDOW(m_gobj), false);
         TransactionCheckStatus status{ m_controller.updateTransaction(g_date_time_format(gtk_calendar_get_date(GTK_CALENDAR(m_calendarDate)), "%Y-%m-%d"), gtk_editable_get_text(GTK_EDITABLE(m_rowDescription)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowType)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowRepeatInterval)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowGroup)), gtk_editable_get_text(GTK_EDITABLE(m_rowAmount))) };
         //Invalid Transaction
         if(status != TransactionCheckStatus::Valid)
@@ -139,6 +141,7 @@ void TransactionDialog::setResponse(const std::string& response)
 
 void TransactionDialog::onDateChanged()
 {
-    gtk_menu_button_set_label(GTK_MENU_BUTTON(m_btnDate), g_date_time_format(gtk_calendar_get_date(GTK_CALENDAR(m_calendarDate)), "%Y-%m-%d"));
+    gtk_menu_button_set_label(GTK_MENU_BUTTON(m_btnDate), g_date_time_format(gtk_calendar_get_date(GTK_CALENDAR(m_calendarDate)), "%x"));
     gtk_popover_popdown(GTK_POPOVER(m_popoverDate));
 }
+

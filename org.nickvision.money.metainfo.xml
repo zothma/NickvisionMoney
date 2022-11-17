@@ -9,20 +9,26 @@
     <p>
       A personal finance manager
     </p>
+    <p xml:lang="hr">
+      Aplikacija za osobne financije
+    </p>
+    <p xml:lang="hi">
+            एक व्यक्तिगत वित्त संयोजक
+    </p>
   </description>
   <launchable type="desktop-id">org.nickvision.money.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <caption>MainWindow</caption>
-      <image>https://user-images.githubusercontent.com/17648453/198850728-c9131275-3093-41b4-a6e4-f831e6ef8223.png</image>
+      <image>https://user-images.githubusercontent.com/17648453/202083015-1a48ec33-84b9-476d-ab66-db9ff507d692.png</image>
     </screenshot>
     <screenshot>
       <caption>OpenAccount</caption>
-      <image>https://user-images.githubusercontent.com/17648453/198850730-9abbf78d-beaf-4c49-a560-7c88d63c6bea.png</image>
+      <image>https://user-images.githubusercontent.com/17648453/202083234-0cf0a733-3ba4-4270-a929-9dd857bdca33.png</image>
     </screenshot>
     <screenshot>
       <caption>DarkMode</caption>
-      <image>https://user-images.githubusercontent.com/17648453/198850732-48228e49-24ee-4612-a530-29512dd6901d.png</image>
+      <image>https://user-images.githubusercontent.com/17648453/202083236-da62f46d-8f69-4297-a2b6-4118cbc464b3.png</image>
     </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/nlogozzo/NickvisionMoney</url>
@@ -31,16 +37,17 @@
     <binary>org.nickvision.money</binary>
   </provides>
   <releases>
-    <release version="2022.11.0-beta5" date="2022-11-12">
+    <release version="2022.11.0-rc1" date="2022-11-15">
       <description>
         <p>- Introducing Groups: Add groups to an account and associate transactions with groups for a more precise finance management system</p>
-        <p>- Money will automatically obtain the user's currency symbol and format from their locale</p>
+        <p>- Money will automatically obtain the user's currency symbol, money format, and date format from their locale</p>
         <p>- Money will remember up to 3 recently opened accounts for quick and easy access</p>
         <p>- Fixed an issue where a new account was not created if overwriting an old one</p>
         <p>- Added translation support</p>
+        <p>- Added Croatian translation (Thanks @milotype!)</p>
         <p>- Added Dutch translation (Thanks @Vistaus!)</p>
         <p>- Added French translation (Thanks @zothma!)</p>
-        <p>- Added Hindi translation (Thanks @securearth!)</p>
+        <p>- Added Hindi translation (Thanks @heymisphere!)</p>
         <p>- Added Italian translation (Thanks @bordam!)</p>
         <p>- Added Polish translation (Thanks @martin-desktops!)</p>
         <p>- Added Russian translation (Thanks @fsobolev!)</p>
